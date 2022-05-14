@@ -14,6 +14,7 @@
             - mysql-data (mapped to /var/lib/mysql)
             - httpd-etc (mapped to /etc/apache2, commented by default)
     - (optional) Edit `docker-compose.yml` to adjust IP address and network
+      - default network: `172.16.238.0/24`
     - (optional) Edit `docker-compose.yml` to change `mysql` passwords and database name
     - (optional) Edit `make_dir.sh` and `docker-compose.yml` to change docker volumes
     - (optional) Edit `docker-compose.yml` to uncomment `httpd-etc` and manualy configure `apache2`
@@ -27,4 +28,5 @@
      - `myuser:mypass123`
      - `root:root`
    - Default databse: `myapp`
+
   
