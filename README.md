@@ -19,4 +19,5 @@
     - (optional) Edit `docker-compose.yml` to uncomment `httpd-etc` and manualy configure `apache2`
     - Start LAMP using `sudo docker-compose up -d`
 3. Transfer you website structure to `html` dir
-4. Access your website via http://localhost:58080
+4. Access your website via `http://<external_ip>:58080`
+5. Access `mysql` via `<external_ip>:30306`
