@@ -13,8 +13,10 @@
             - html (mapped to /var/www/html/)
             - mysql-data (mapped to /var/lib/mysql)
             - httpd-etc (mapped to /etc/apache2, commented by default)
-    - (optional) Edit docker-compose.yml to adjust IP address and network
+    - (optional) Edit `docker-compose.yml` to adjust IP address and network
+    - (optional) Edit `docker-compose.yml` to change `mysql` passwords and database name
     - (optional) Edit `make_dir.sh` and `docker-compose.yml` to change docker volumes
     - (optional) Edit `docker-compose.yml` to uncomment `httpd-etc` and manualy configure `apache2`
     - Start LAMP using `sudo docker-compose up -d`
-   
+3. Transfer you website structure to `html` dir
+4. Access your website via http://localhost:58080
