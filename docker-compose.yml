@@ -1,0 +1,47 @@
+version: "3.7"
+services:
+  php:
+    build:
+      dockerfile: php.Dockerfile
+      context: .
+    image: mihai/lamp_php:latest
+    restart: unless-stopped
+    hostname: 'web-sever'
+    container_name: 'lamp_web-server'
+    volumes:
+      - "./html/:/var/www/html/"
+        #      - "./httpd-etc:/etc/apache2"
+    networks:
+      lamp:
+        ipv4_address: 172.16.238.10
+    ports:
+      - "58080:80/tcp"
+    extra_hosts:
+      - "mysql-sever:172.16.238.11"
+  mysql:
+    image: ubuntu/mysql
+    restart: unless-stopped
+    hostname: 'mysql-server'
+    container_name: 'lamp_myssql-server'
+    environment:
+      TZ: UTC
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: myapp
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypass123
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    networks:
+      lamp:
+        ipv4_address: 172.16.238.11
+    ports:
+      - "30306:3306"
+
+networks:
+  lamp:
+    driver: bridge
+    name: lamp
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24
