@@ -20,4 +20,11 @@
     - Start LAMP using `sudo docker-compose up -d`
 3. Transfer you website structure to `html` dir
 4. Access your website via `http://<external_ip>:58080`
-5. Access `mysql` via `<external_ip>:30306`
+5. Access `mysql` via 
+   - Address: `<external_ip or localhost>:30306`
+     - communication between `php` and `mysql` is done on the internal network using `default port 3306` 
+   - Default credentials: 
+     - `myuser:mypass123`
+     - `root:root`
+   - Default databse: `myapp`
+  
