@@ -12,21 +12,19 @@
         - as a result the 3 default dirs will be created
             - html (mapped to /var/www/html/)
             - mysql-data (mapped to /var/lib/mysql)
-            - httpd-etc (mapped to /etc/apache2, commented by default)
+            - httpd-etc (mapped to /etc/apache2, commented out by default)
     - (optional) Edit `docker-compose.yml` to adjust IP address and network
       - default docker internal network: `172.16.238.0/24`
-    - (optional) Edit `docker-compose.yml` to change `mysql` passwords and database name
-    - (optional) Edit `make_dir.sh` and `docker-compose.yml` to change docker volumes
+      - Access `mysql` via
+        - Address: `<external_ip or localhost>:30306`
+        - communication between `php` and `mysql` is done on the internal network using `default port 3306` 
+    - (optional) Edit `docker-compose.yml` to change `mysql` passwords and default database name
+      -  Default credentials: 
+         - `myuser:mypass123`
+         - `root:root`
+      - Default databse: `myapp`
+    - (optional) Edit `docker-compose.yml` and `make_dir.sh`  to change docker volumes
     - (optional) Edit `docker-compose.yml` to uncomment `httpd-etc` and manualy configure `apache2`
-    - Start LAMP using `sudo docker-compose up -d`
-3. Transfer you website structure to `html` dir
-4. Access your website via `http://<external_ip  or localhost>:58080`
-5. Access `mysql` via 
-   - Address: `<external_ip or localhost>:30306`
-     - communication between `php` and `mysql` is done on the internal network using `default port 3306` 
-   - Default credentials: 
-     - `myuser:mypass123`
-     - `root:root`
-   - Default databse: `myapp`
-
-  
+3. Start LAMP using `sudo docker-compose up -d`
+4. Transfer you website structure to `html` dir
+5. Access your website via `http://<external_ip  or localhost>:58080`
